@@ -1,5 +1,7 @@
 """Tests for b64s.py."""
 
+# pylint: disable=missing-function-docstring
+
 import pytest
 
 import b64s
