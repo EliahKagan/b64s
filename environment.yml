@@ -1,4 +1,4 @@
-name: b64
+name: b64s
 
 channels:
   - conda-forge
