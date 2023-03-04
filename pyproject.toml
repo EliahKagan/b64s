@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "b64s"
+version = "0.1.0"
+description = "Friendly Base64 with str input and output, using UTF-8"
+authors = ["Eliah Kagan <degeneracypressure@gmail.com>"]
+license = "CC0-1.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8.1"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+ipykernel = "^6.21.2"
+mypy = "^1.0.1"
+pylint = "^2.16.3"
+pyright = "^1.1.296"
+pytest = "^7.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
