@@ -5,4 +5,9 @@ channels:
 
 dependencies:
   - python=3.11
+  - flake8
   - ipykernel
+  - mypy
+  - pylint
+  - pyright
+  - pytest

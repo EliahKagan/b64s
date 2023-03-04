@@ -1,0 +1,16 @@
+{
+    "cSpell.language": "en,he",
+    "cSpell.words": [
+        "conda",
+        "ipykernel",
+        "mypy",
+        "pylint",
+        "pyright",
+        "pytest"
+    ],
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
