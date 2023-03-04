@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+
 """Tests for b64s.py."""
 
 # pylint: disable=missing-function-docstring
+
+import sys
 
 import pytest
 
@@ -91,3 +95,7 @@ def test_decode_encode_round_trips(plain: str, coded: str) -> None:
     del plain  # Not used in this test.
     result = b64s.encode(b64s.decode(coded))
     assert result == coded
+
+
+if __name__ == '__main__':
+    sys.exit(pytest.main([__file__, *sys.argv[1:]]))
