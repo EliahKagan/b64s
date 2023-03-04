@@ -68,26 +68,26 @@ _parametrize_examples = pytest.mark.parametrize('plain, coded', [
 
 
 @_parametrize_examples
-def test_encode_converts_to_base64(plain, coded):
+def test_encode_converts_to_base64(plain: str, coded: str) -> None:
     result = b64s.encode(plain)
     assert result == coded
 
 
 @_parametrize_examples
-def test_decode_converts_from_base64(plain, coded):
+def test_decode_converts_from_base64(plain: str, coded: str) -> None:
     result = b64s.decode(coded)
     assert result == plain
 
 
 @_parametrize_examples
-def test_encode_decode_round_trips(plain, coded):
+def test_encode_decode_round_trips(plain: str, coded: str) -> None:
     del coded  # Not used in this test.
     result = b64s.decode(b64s.encode(plain))
     assert result == plain
 
 
 @_parametrize_examples
-def test_decode_encode_round_trips(plain, coded):
+def test_decode_encode_round_trips(plain: str, coded: str) -> None:
     del plain  # Not used in this test.
     result = b64s.encode(b64s.decode(coded))
     assert result == coded
