@@ -37,7 +37,7 @@ jobs:
       - name: Install poetry
         run: |
           curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py |
-              python3 -
+              python -
 
       - name: Install project and test runner
         run: ${{ matrix.poetry }} install
