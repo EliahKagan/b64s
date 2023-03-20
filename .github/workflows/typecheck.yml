@@ -20,7 +20,7 @@ jobs:
         run: curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py | python3 -
 
       - name: Generate requirements.txt
-        run: poetry export --dev >requirements.txt
+        run: poetry export --with dev >requirements.txt
 
       - name: mypy Typecheck
         uses: jpetrucciani/mypy-check@1.1.1
@@ -48,7 +48,7 @@ jobs:
         run: curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py | python3 -
 
       - name: Generate requirements.txt
-        run: poetry export --dev >requirements.txt
+        run: poetry export --with dev >requirements.txt
 
       - name: Install library dependencies
         run: pip install -r requirements.txt
