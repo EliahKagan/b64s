@@ -1,12 +1,14 @@
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 
-# b64s - Friendly Base64 with str input and output, using UTF-8
+# b64s - Base64 with UTF-8 str input and output
 
 The [`b64s` module](b64s/__init__.py) provides two simple functions, `encode`
 and `decode`, that thinly wrap functionality from the [`base64`
 module](https://docs.python.org/3/library/base64.html) in the standard library,
-so that all arguments and return values are `str` and UTF-8 encoding is assumed
-and used.
+so that:
+
+- All arguments and return values are `str`.
+- UTF-8 encoding is assumed and used.
 
 ## License
 
@@ -31,6 +33,13 @@ the repository](https://github.com/EliahKagan/b64s).
 'The Hebrew phrase for “snowboarder” is גולש סנובורד. 🏂'
 ```
 
+## What’s here
+
+The interesting files are:
+
+- [`b64s/__init__.py`](b64s/__init__.py) – `encode` and `decode` functions.
+- [`test_b64s.py`](test_b64s.py) – Unit tests.
+- [`scratchpad.ipynb`](scratchpad.ipynb) – Notebook for trying things out.
 
 ## Acknowledgements
 

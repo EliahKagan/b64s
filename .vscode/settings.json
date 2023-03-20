@@ -4,6 +4,7 @@
         "conda",
         "Eliah",
         "ipykernel",
+        "ipynb",
         "Kagan",
         "mypy",
         "pylint",
