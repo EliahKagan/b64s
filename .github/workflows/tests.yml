@@ -71,7 +71,7 @@ jobs:
           perl -i -spwe 's/^ *- python=\K.+$/$pyver/' -- \
               -pyver=${{ matrix.python-version }} environment.yml
 
-      - name: Install Conda environment from environment.yml
+      - name: Provision with micromamba
         uses: mamba-org/provision-with-micromamba@v15
 
       - name: Print Python version
