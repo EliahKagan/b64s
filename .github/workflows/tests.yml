@@ -9,16 +9,16 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu, macos, windows]
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
         include:
           - poetry: ~/.local/bin/poetry
 
-          - os: windows-latest
+          - os: windows
             poetry: |-
               "$APPDATA/Python/Scripts/poetry"
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
 
     defaults:
       run:
