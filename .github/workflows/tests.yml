@@ -1,0 +1,81 @@
+name: Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  # TODO: Turn test-poetry into a tox-based test job (renaming accordingly).
+  test-poetry:
+    name: Test (poetry)
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+        include:
+          - poetry: ~/.local/bin/poetry
+
+          - os: windows-latest
+            poetry: |-
+              "$APPDATA/Python/Scripts/poetry"
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # TODO: Print the install script commit hash and Poetry version.
+      - name: Install poetry
+        run: |
+          curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py |
+              python3 -
+
+      - name: Install project and test runner
+        run: ${{ matrix.poetry }} install
+
+      - name: Print Python version
+        run: ${{ matrix.poetry }} run python -V
+
+      - name: Run Unit Tests
+        run: ${{ matrix.poetry }} run pytest
+
+  test-conda:
+    name: Test (conda)
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+
+      - name: Substitute Python version
+        run: |
+          perl -i -spwe 's/^ *- python=\K.+$/$pyver/' -- \
+              -pyver=${{ matrix.python-version }} environment.yml
+
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@v15
+
+      - name: Print Python version
+        run: python -V
+
+      - name: Run Unit Tests
+        run: pytest
