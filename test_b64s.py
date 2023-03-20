@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Tests for b64s.py."""
+"""Tests for the b64s module."""
 
 # pylint: disable=missing-function-docstring
 

@@ -5,6 +5,13 @@ description = "Friendly Base64 with str input and output, using UTF-8"
 authors = ["Eliah Kagan <degeneracypressure@gmail.com>"]
 license = "CC0-1.0"
 readme = "README.md"
+homepage = "https://github.com/EliahKagan/b64s"
+repository = "https://github.com/EliahKagan/b64s"
+keywords = ["base64", "decoding", "encoding", "text", "utf-8"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
