@@ -30,7 +30,7 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 
-      - name: Configure Poetry environment
+      - name: Configure poetry to use the python from setup-python
         run: poetry env use python
 
       - name: Install project and test runner
