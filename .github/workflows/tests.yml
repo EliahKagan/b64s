@@ -27,6 +27,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - if: matrix.os == 'windows'
+        name: Add Python scripts directory to PATH
+        run: printf '%s\n' "$APPDATA/Python/Scripts" >>"$GITHUB_PATH"
+
       # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
         run: |
