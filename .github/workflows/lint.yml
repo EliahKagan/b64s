@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: flake8 Lint
         uses: py-actions/flake8@v2
@@ -28,10 +28,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
+      # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
-        run: pipx install poetry
+        run: curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py | python3 -
 
       - name: Install project
         run: poetry install

@@ -13,10 +13,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: 3.11
 
+      # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
-        run: pipx install poetry
+        run: curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py | python3 -
 
       - name: Generate requirements.txt
         run: poetry export --with dev >requirements.txt
@@ -24,8 +25,8 @@ jobs:
       - name: mypy Typecheck
         uses: jpetrucciani/mypy-check@1.2.0
         with:
-          python_version: '3.11'
-          requirements_file: 'requirements.txt'
+          python_version: "3.11"
+          requirements_file: "requirements.txt"
 
   pyright:
     runs-on: ubuntu-latest
@@ -37,13 +38,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: 3.11
 
       - name: Upgrade PyPA packages
         run: python -m pip install -U pip setuptools wheel
 
+      # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
-        run: pipx install poetry
+        run: curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py | python3 -
 
       - name: Generate requirements.txt
         run: poetry export --with dev >requirements.txt
