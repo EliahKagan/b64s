@@ -27,15 +27,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - if: matrix.os == 'windows'
-        name: Add Python scripts directory to PATH
-        run: printf '%s\n' "$APPDATA/Python/Scripts" >>"$GITHUB_PATH"
-
-      # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
-        run: |
-          curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py |
-              python -
+        run: pipx install poetry
+
+      - name: Configure Poetry environment
+        run: poetry env use ${{ matrix.python-version }}
 
       - name: Install project and test runner
         run: poetry install
