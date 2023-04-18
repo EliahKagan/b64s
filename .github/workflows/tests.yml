@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu, macos, windows]
-
         python-version:
           - '3.7'
           - '3.8'
@@ -20,13 +19,6 @@ jobs:
           - 'pypy3.7'
           - 'pypy3.8'
           - 'pypy3.9'
-
-        include:
-          - poetry: ~/.local/bin/poetry
-
-          - os: windows
-            poetry: |-
-              "$APPDATA/Python/Scripts/poetry"
 
     runs-on: ${{ matrix.os }}-latest
 
@@ -43,20 +35,20 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # TODO: Print the install script commit hash and Poetry version.
       - name: Install poetry
-        run: |
-          curl -sSL https://raw.githubusercontent.com/EliahKagan/install.python-poetry.org/ci-repro/b64s/install-poetry.py |
-              python -
+        run: pipx install poetry
+
+      - name: Configure poetry to use the python from setup-python
+        run: poetry env use python
 
       - name: Install project and test runner
-        run: ${{ matrix.poetry }} install
+        run: poetry install
 
       - name: Print Python version
-        run: ${{ matrix.poetry }} run python -V
+        run: poetry run python -V
 
       - name: Run Unit Tests
-        run: ${{ matrix.poetry }} run pytest
+        run: poetry run pytest
 
   test-conda:
     name: Test (conda)
