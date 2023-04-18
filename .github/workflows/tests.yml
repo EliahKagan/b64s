@@ -11,12 +11,6 @@ jobs:
       matrix:
         os: [ubuntu, macos, windows]
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
-        include:
-          - poetry: ~/.local/bin/poetry
-
-          - os: windows
-            poetry: |-
-              "$APPDATA/Python/Scripts/poetry"
 
     runs-on: ${{ matrix.os }}-latest
 
@@ -40,13 +34,13 @@ jobs:
               python -
 
       - name: Install project and test runner
-        run: ${{ matrix.poetry }} install
+        run: poetry install
 
       - name: Print Python version
-        run: ${{ matrix.poetry }} run python -V
+        run: poetry run python -V
 
       - name: Run Unit Tests
-        run: ${{ matrix.poetry }} run pytest
+        run: poetry run pytest
 
   test-conda:
     name: Test (conda)
