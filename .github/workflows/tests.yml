@@ -21,6 +21,14 @@ jobs:
           - 'pypy3.8'
           - 'pypy3.9'
 
+        include:
+          - python-interpreter: |-
+              "$pythonLocation/bin/python"
+
+          - os: windows
+            python-interpreter: |-
+              "$pythonLocation/python.exe"
+
       fail-fast: false
 
     runs-on: ${{ matrix.os }}-latest
@@ -41,8 +49,8 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 
-      - name: Configure poetry to use the python from setup-python
-        run: poetry env use python
+      - name: Configure poetry environment
+        run: poetry env use ${{ matrix.python-interpreter }}
 
       - name: Install project and test runner
         run: poetry install --only=main,test

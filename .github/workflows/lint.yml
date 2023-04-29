@@ -33,8 +33,8 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 
-      - name: Configure poetry to use the python from setup-python
-        run: poetry env use python
+      - name: Configure poetry environment
+        run: poetry env use 3.11
 
       - name: Install project
         run: poetry install --only=main,analyze,test
