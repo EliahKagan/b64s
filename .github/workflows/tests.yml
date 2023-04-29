@@ -34,7 +34,7 @@ jobs:
         run: poetry env use python
 
       - name: Install project and test runner
-        run: poetry install
+        run: poetry install --only=main,test
 
       - name: Print Python version
         run: poetry run python -V
