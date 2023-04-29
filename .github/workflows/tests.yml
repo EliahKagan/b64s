@@ -22,10 +22,12 @@ jobs:
           - 'pypy3.9'
 
         include:
-          - relative-python: bin/python
+          - python-interpreter: |-
+              "$pythonLocation/bin/python"
 
           - os: windows
-            relative-python: python.exe
+            python-interpreter: |-
+              "$pythonLocation/python.exe"
 
       fail-fast: false
 
@@ -48,7 +50,7 @@ jobs:
         run: pipx install poetry
 
       - name: Configure poetry environment
-        run: poetry env use "$pythonLocation/${{ matrix.relative-python }}"
+        run: poetry env use ${{ matrix.python-interpreter }}
 
       - name: Install project and test runner
         run: poetry install --only=main,test
