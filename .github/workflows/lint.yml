@@ -34,7 +34,7 @@ jobs:
         run: pipx install poetry
 
       - name: Configure poetry to use the python from setup-python
-        run: poetry env use python
+        run: poetry env use "$pythonLocation/python"
 
       - name: Install project
         run: poetry install --only=main,analyze,test
