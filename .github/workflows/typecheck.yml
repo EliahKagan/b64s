@@ -19,7 +19,7 @@ jobs:
         run: pipx install poetry
 
       - name: Generate requirements.txt
-        run: poetry export --with dev >requirements.txt
+        run: poetry export --with analyze >requirements.txt
 
       - name: mypy Typecheck
         uses: jpetrucciani/mypy-check@1.2.0
@@ -46,7 +46,7 @@ jobs:
         run: pipx install poetry
 
       - name: Generate requirements.txt
-        run: poetry export --with dev >requirements.txt
+        run: poetry export --with analyze >requirements.txt
 
       - name: Install library dependencies
         run: pip install -r requirements.txt
