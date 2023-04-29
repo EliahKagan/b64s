@@ -38,6 +38,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Show interpreter path
+        run: command -v python
+
+      - name: Show interpreter version
+        run: python -V
+
       - name: Install poetry
         run: pipx install poetry
 
