@@ -37,7 +37,7 @@ jobs:
         run: poetry env use python
 
       - name: Install project
-        run: poetry install
+        run: poetry install --only=main,analyze,test
 
       - name: pylint Lint
         run: poetry run pylint b64s test_b64s
