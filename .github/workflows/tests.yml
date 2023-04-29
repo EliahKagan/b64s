@@ -41,6 +41,9 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 
+      - name: List python directory from setup-python
+        run: ls -l -- "$pythonLocation"
+
       - name: Configure poetry to use the python from setup-python
         run: poetry env use "$pythonLocation/python"
 
