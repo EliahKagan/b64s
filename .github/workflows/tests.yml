@@ -44,6 +44,9 @@ jobs:
       - name: List python directory from setup-python
         run: ls -l -- "$pythonLocation"
 
+      - name: List its bin subdirectory
+        run: ls -l -- "$pythonLocation/bin"
+
       - name: Configure poetry to use the python from setup-python
         run: poetry env use "$pythonLocation/python"
 
