@@ -41,8 +41,8 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 
-      - name: Configure poetry to use the python from setup-python
-        run: poetry env use python
+      - name: Configure the poetry environment
+        run: poetry env use ${{ matrix.python-version }}
 
       - name: Install project and test runner
         run: poetry install --only=main,test
