@@ -22,7 +22,7 @@ jobs:
         run: poetry export --with=analyze,test >requirements.txt
 
       - name: mypy Typecheck
-        uses: jpetrucciani/mypy-check@1.7.1
+        uses: jpetrucciani/mypy-check@1.8.0
         with:
           python_version: '3.11'
           requirements_file: requirements.txt
