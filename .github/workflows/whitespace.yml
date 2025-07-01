@@ -2,6 +2,9 @@ name: Check whitespace
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   end-of-line:
     name: End-of-line blanks
