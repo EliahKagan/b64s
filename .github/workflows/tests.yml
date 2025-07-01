@@ -2,6 +2,9 @@ name: Unit Tests
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   # TODO: Turn test-poetry into a tox-based test job (renaming accordingly).
   test-poetry:
@@ -11,23 +14,7 @@ jobs:
       matrix:
         os: [ubuntu, macos, windows]
 
-        python-version:
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
-          - 'pypy3.7'
-          - 'pypy3.8'
-          - 'pypy3.9'
-
-        exclude:
-          - os: macos
-            python-version: '3.7'
-
-          - os: macos
-            python-version: 'pypy3.7'
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
 
         include:
           - python-interpreter: |-
@@ -79,17 +66,7 @@ jobs:
           - macos
           - windows
 
-        python-version:
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
-
-        exclude:
-          - os: macos
-            python-version: '3.7'
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
 
       fail-fast: false
 
